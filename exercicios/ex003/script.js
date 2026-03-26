@@ -1,5 +1,4 @@
-/*  
-    O Desafio: "Simulador de Vida"
+/*  O Desafio: "Simulador de Vida"
     /Você deve criar um script que gerencie os dados de um usuário. O desafio mistura Objetos, Arrays, Cálculos e Condicionais.
 
     Requisitos:
@@ -12,8 +11,6 @@
     Relatório Final: Use um único console.log (usando Template Strings) para mostrar:
     "O usuário [nome] tem [idade] anos. Após as compras de [lista de compras], seu saldo restante é R$[salario]." 
 */
-
-
 
 class usuario{
     constructor(nome, anoNascimento, salario) {
