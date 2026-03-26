@@ -37,3 +37,59 @@
     "O cliente [titular] possui saldo de R$ [X].
      Extrato: [lista de operações]"
 */
+
+class ContaBancaria{
+    constructor(titular,saldo) {
+        this.titular = titular
+        this.saldo = saldo
+        this.extrato = []
+    }
+
+    getTitular() {
+        return this.titular
+    }
+
+    getSaldo() {
+        return this.saldo
+    }
+    
+    getExtrato() {
+        return this.extrato
+    }
+
+    deposito(valor) {
+        this.saldo += valor
+        this.extrato.push(`Deposito com valor de R$${valor} Realizado com sucesso!!!`)
+    } 
+
+    saque(valor) {
+        if(valor <= 0) {
+            console.log(`Você não tem saldo suficiente para realizar o saque no valor de R$${valor} \n Seu saldo atual: R$${saldo}`)
+            return
+        }
+
+        this.saldo -= valor
+        this.extrato.push(`Saque com valor de R$${valor} Realizado com sucesso!!!`)
+    }
+
+    transferencia(contaDestino,saldo) {
+        if(saldo > this.saldo) {
+            console.log(`Saldo insuficiente para fazer essa transferencia`)
+            return
+        }
+        
+        this.saldo -= saldo
+        contaDestino.saldo += saldo
+        this.extrato.push(`Transferência de R$${saldo.toFixed(2)} para ${contaDestino.titular}`)
+        contaDestino.extrato.push(`Transferência de R$${saldo.toFixed(2)} recebida de ${this.titular}`)
+    }
+}
+const conta1 = new ContaBancaria("João", 100)
+const conta2 = new ContaBancaria("Maria", 50)
+
+conta1.transferencia(conta2, 40)
+
+console.log(conta1.saldo) // 60
+console.log(conta2.saldo) // 90
+console.log(conta1.extrato) // ["Transferência de R$ 40 para Maria"]
+console.log(conta2.extrato) //
