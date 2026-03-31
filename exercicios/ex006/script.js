@@ -25,10 +25,22 @@ let inputNomeParaListaConclusao = document.getElementById("inputNomeParaListaCon
 let BtnadicionarNaListaConclusao = document.getElementById("BtnadicionarNaListaConclusao")
 let ListaConclusao = document.getElementById("ListaConclusao")
 
+let ListaParaTrocarCor = document.getElementById("ListaParaTrocarCor")
+let btnTrocarCor = document.getElementById("btnTrocarCor")
+let teste1 = document.getElementById("teste1")
+let valorDaLista = 0
+
+let remover = document.getElementById("remover")
+let ListaParaRemover = document.getElementById("ListaParaRemover")
+
+let meuFormulario = document.getElementById("meuFormulario")
+let inputNome = document.getElementById("inputNome")
+let inputEmail = document.getElementById("inputEmail")
+let submit = document.getElementById("submit")
 
 function trocarTexto() {
     texto.textContent = "eu alterei seu texto"
-}
+}   
 
 function trocarCor() {
     paragrafo.style.color = "blue"
@@ -57,6 +69,10 @@ function Validacao() {
     }
 }
 
+function alerta(){
+     alert("Digite um nome para adicionar a lista!!!")
+}
+
 function adicionarNaLista() {
     const valor = nomeParaAdicionarNaLista.value
     if(valor !== "") {
@@ -73,7 +89,7 @@ function adicionarNaLista() {
 
         nomeParaAdicionarNaLista.value = ""
     } else {
-       alert("Digite um nome para adicionar a lista!!!")
+      alerta()
     }
 }
 
@@ -106,11 +122,41 @@ function listaConclusao() {
 
         inputNomeParaListaConclusao.value = ""
     } else {
-        alert("Digite um nome para adicionar a lista!!!")
+        alerta()
     }
 }
 
-botaoH1.addEventListener("click", trocarTexto)
+function trocarCorLista() {  
+    const itens = ListaParaTrocarCor.querySelectorAll("li")
+
+    itens.forEach(function (item){
+        item.style.color =
+            item.style.color === "" ? "blue" : ""
+    })
+}
+
+function contarItensDaLista() {
+    const lista = ListaParaTrocarCor.querySelectorAll("li")
+    valorDaLista = lista.length
+
+    teste1.textContent = "Numero de itens na lista: " + valorDaLista
+    valorDaLista = 0
+}
+
+function RemoverItensDaLista() {
+    ListaParaRemover.innerHTML = ""
+}
+
+function formularioTeste(e) {
+    e.preventDefault();
+
+    const nome = inputNome.value
+    const email = inputEmail.value
+    console.log(nome)
+    console.log(email)
+}
+
+botaoH1.addEventListener("click", trocarTexto)  
 botaoParagrafo.addEventListener("click", trocarCor)
 btnMostrar.addEventListener("click", mostrarNome)
 btnContadorDeClicks.addEventListener("click", contadorDeClicks)
@@ -118,3 +164,7 @@ BtnToglle.addEventListener("click", toglle)
 btnValidacao.addEventListener("click", Validacao)
 btnAdicionarNaLista.addEventListener("click", adicionarNaLista)
 BtnadicionarNaListaConclusao.addEventListener("click", listaConclusao)
+btnTrocarCor.addEventListener("click", trocarCorLista)
+btnTrocarCor.addEventListener("click", contarItensDaLista)
+remover.addEventListener("click", RemoverItensDaLista)
+submit.addEventListener("submit", formularioTeste)
