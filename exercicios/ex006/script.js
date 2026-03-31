@@ -18,9 +18,13 @@ let textValidacao = document.getElementById("textValidacao")
 let btnValidacao = document.getElementById("btnValidacao")
 
 let nomeParaAdicionarNaLista = document.getElementById("nomeParaAdicionarNaLista")
-let btnAdicionar = document.getElementById("btnAdicionar")
-let lista = document.getElementById("lista")
-let array = []
+let btnAdicionarNaLista = document.getElementById("btnAdicionarNaLista")
+let listaDeItens = document.getElementById("listaDeItens")
+
+let inputNomeParaListaConclusao = document.getElementById("inputNomeParaListaConclusao")
+let BtnadicionarNaListaConclusao = document.getElementById("BtnadicionarNaListaConclusao")
+let ListaConclusao = document.getElementById("ListaConclusao")
+
 
 function trocarTexto() {
     texto.textContent = "eu alterei seu texto"
@@ -41,11 +45,8 @@ function contadorDeClicks() {
 }
 
 function toglle() {
-    if(BtnToglle.style.color === ""){
-        BtnToglle.style.color = "red"
-    } else if(BtnToglle.style.color === "red") {
-        BtnToglle.style.color = ""
-    }
+    BtnToglle.style.color =
+            BtnToglle.style.color === "red" ? "" : "red"
 }
 
 function Validacao() {
@@ -56,23 +57,57 @@ function Validacao() {
     }
 }
 
-function adicionarNaLista() { /* Estudar mais sobre este assunto */ 
-    let novoItem = nomeParaAdicionarNaLista.value.trim()
+function adicionarNaLista() {
+    const valor = nomeParaAdicionarNaLista.value
+    if(valor !== "") {
+        const novoLi = document.createElement("li")
+        const btnExcluir = document.createElement("button")
+        btnExcluir.textContent = "Excluir"
+        btnExcluir.style.margin = "8px"
+        btnExcluir.addEventListener("click", function(){
+            listaDeItens.removeChild(novoLi)
+        })
+        novoLi.textContent = valor
+        novoLi.appendChild(btnExcluir)
+        listaDeItens.appendChild(novoLi)
 
-    if (novoItem === ""){
-        alert("Por favor, digite um nome!")
-        return
+        nomeParaAdicionarNaLista.value = ""
+    } else {
+       alert("Digite um nome para adicionar a lista!!!")
     }
+}
 
-    array.push(novoItem)
+function listaConclusao() {
+    const valor = inputNomeParaListaConclusao.value
+    if(valor !== "") {
+        const novoLi = document.createElement("li")
+        const btnExcluir = document.createElement("button")
+        const btnConcluir = document.createElement("button")
 
-    let novaLi = document.createElement("li")
-    novaLi.textContent = novoItem
+        btnExcluir.textContent = "Excluir"
+        btnExcluir.style.margin = "8px"
 
-    lista.appendChild(novaLi)
+        btnConcluir.textContent = "Concluir"
+        btnConcluir.style.margin = "8px"
 
-    nomeParaAdicionarNaLista.value = ""
-    nomeParaAdicionarNaLista.focus()
+        btnExcluir.addEventListener("click", function() {
+            ListaConclusao.removeChild(novoLi)
+        })
+
+        btnConcluir.addEventListener("click", function() {
+            novoLi.style.textDecoration =
+                novoLi.style.textDecoration === "line-through" ? "none" : "line-through" //estudar mais sobre essa maneira de decidir verdadeiro ou falso 
+        })
+
+        novoLi.textContent = valor
+        novoLi.appendChild(btnConcluir)
+        novoLi.appendChild(btnExcluir)
+        ListaConclusao.appendChild(novoLi)
+
+        inputNomeParaListaConclusao.value = ""
+    } else {
+        alert("Digite um nome para adicionar a lista!!!")
+    }
 }
 
 botaoH1.addEventListener("click", trocarTexto)
@@ -81,4 +116,5 @@ btnMostrar.addEventListener("click", mostrarNome)
 btnContadorDeClicks.addEventListener("click", contadorDeClicks)
 BtnToglle.addEventListener("click", toglle)
 btnValidacao.addEventListener("click", Validacao)
-btnAdicionar.addEventListener("click", adicionarNaLista)
+btnAdicionarNaLista.addEventListener("click", adicionarNaLista)
+BtnadicionarNaListaConclusao.addEventListener("click", listaConclusao)
