@@ -36,7 +36,7 @@ let ListaParaRemover = document.getElementById("ListaParaRemover")
 let meuFormulario = document.getElementById("meuFormulario")
 let inputNome = document.getElementById("inputNome")
 let inputEmail = document.getElementById("inputEmail")
-let submit = document.getElementById("submit")
+let btnSubmit = document.getElementById("btnSubmit")
 
 function trocarTexto() {
     texto.textContent = "eu alterei seu texto"
@@ -167,4 +167,4 @@ BtnadicionarNaListaConclusao.addEventListener("click", listaConclusao)
 btnTrocarCor.addEventListener("click", trocarCorLista)
 btnTrocarCor.addEventListener("click", contarItensDaLista)
 remover.addEventListener("click", RemoverItensDaLista)
-submit.addEventListener("submit", formularioTeste)
+meuFormulario.addEventListener("submit", formularioTeste)
