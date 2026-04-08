@@ -1,0 +1,83 @@
+Documentação do projeto
+
+---
+## Descrição
+
+
+Aplicação web simples para gerenciamento de alunos com operações de CRUD (Criar, Ler, Atualizar e Excluir), utilizando JavaScrip e uma API fake que o professor moak deu pra gente com json-server.
+---
+## Tecnologias
+
+* HTML
+* CSS
+* JavaScript
+* json-server
+---
+
+## Estrutura do aluno
+{
+  "id": "string",
+  "nome": "string",
+  "idade": number,
+  "curso": "string",
+  "ativo": boolean
+}
+
+Obs: o ID é gerado automaticamente pelo json-server, tive que destacar isso
+por que eu tive um serio problema de tentar editar ou excluir um aluno e não tava indo por que a API colocava o ID em String e meu código so aceitava Number, no caso fiquei um bom tempo para descobrir isso então achei importante citar.
+---
+
+## Funcionalidades
+
+* Listar alunos (GET)
+* Criar aluno (POST)
+* Editar aluno (PUT)
+* Excluir aluno (DELETE)
+* Alternar status ativo (PATCH)
+---
+## Funções principais
+
+carregarAlunos()
+
+→ Busca e exibe alunos na tela
+
+criarAluno()
+
+→ Cria ou atualiza aluno
+
+editarAluno(id)
+
+→ Carrega dados para edição
+
+excluirAluno(id)
+
+→ Remove aluno
+
+alternarStatus(id, ativo)
+
+→ Atualiza status ativo
+
+abrirModal(aluno)
+
+→ Abre formulário
+
+fecharModal()
+
+→ Fecha formulário
+---
+## Observações
+
+* O ID é string, então deve ser usado entre aspas:
+ editarAluno('${aluno.id}')
+* Não enviar ID no POST
+---
+## Melhorias futuras
+
+* Remover onclick do HTML
+* Usar addEventListener
+* Validação de formulário
+* Melhoria visual
+---
+
+
+

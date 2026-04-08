@@ -1,0 +1,19 @@
+{
+  "alunos": [
+    {
+      "nome": "moakinho do sel",
+      "idade": 65,
+      "curso": "desenvolvimento",
+      "ativo": true,
+      "id": "YO2OfJTkMVc"
+    },
+    {
+      "nome": "3030",
+      "idade": 3030,
+      "curso": "3030",
+      "ativo": true,
+      "id": "iufQplulv1M"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
